@@ -26,18 +26,24 @@ public class Samochody {
         return new Color(R, G, B);
     }
 
-    public double losuj_przyrost_kata(){
-
-        double delta1 = rand.nextDouble();
+    public double losuj_przyrost_kata(){  //Losuje o jaki kat ma pojechac samochod
+        double delta1 = rand.nextDouble()*0.1;
         return delta1;
     }
 
-    public void ustaw_kat(double kat) {
-        if(kat > 2*Math.PI){
-            this.kat = 0;
+    public void ustaw_kat() {  //Zapobiega nagromadzeniu kata
+        if(this.kat > 2*Math.PI){
+            this.kat -= 2*Math.PI;
         }
         else{
-            this.kat = kat;
+            this.kat = this.kat;
         }
+    }
+
+    public void obliczane_pozycji(){  //Oblicza pozycje x,y na podstawie kata
+        this.x = (int) (75*Math.sin(this.kat)+150);
+        this.y = (int) (75*Math.cos(this.kat)+150);
+        System.out.print("x :"+this.x);
+        System.out.println("---y :"+this.y);
     }
 }
